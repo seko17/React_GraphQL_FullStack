@@ -1,0 +1,19 @@
+{
+  "name": "SovTech_Technical_Assessment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd server && nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-datasource": "^3.0.2",
+    "apollo-datasource-rest": "^3.0.2",
+    "apollo-server": "^3.0.2",
+    "graphql": "^15.5.1"
+  }
+}
