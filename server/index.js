@@ -11,6 +11,7 @@ const PersonAPI = require('./datasources/person');
 const server = new ApolloServer({ 
     typeDefs,
     resolvers,
+    playground: true,
     dataSources: () => ({
         personApi: new PersonAPI(),
     }) 

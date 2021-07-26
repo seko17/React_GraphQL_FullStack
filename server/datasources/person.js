@@ -6,28 +6,38 @@ class PersonAPI extends RESTDataSource {
         this.baseURL = 'https://swapi.dev/';
     }
 
-    async getAllPeople() {
-        const query = "api/people"
+    async getAllPeople(pageNo) {
+        console.log(pageNo)
+        if(!pageNo){
+            console.log('its null')
+        const query = "api/people/"
         const response = await this.get(query);
-        // return response.results ;
         return Array.isArray(response.results)
             ? response.results.map(person => this.personReducer(person))
             : [];
+        }else{
+            console.log('its not null')
+        const query = `api/people/?page=${pageNo}`
+        const response = await this.get(query);
+        return Array.isArray(response.results)
+            ? response.results.map(person => this.personReducer(person))
+            : [];
+        }
+
     }
-    // async getPersonByName() {
-    //     const query = `api/people/?${person}`
-    //     const response = await this.get(query);
-    //     // return response.results ;
-    //     return Array.isArray(response.results)
-    //         ? response.results.map(person => this.personReducer(person))
-    //         : [];
-    // }
-    //   async getPersonByName({ launchId }) {
-    //     const query = `api/people/?${launchId}`
-    //     const response = await this.get(query);
-    // // const res = await this.get('launches', { flight_number: launchId });
-    // return this.personReducer(response[0]);
-//   }
+    
+    async getPerson(personName) {
+        console.log(personName)
+        const query = `api/people/?search=${personName}`
+        const response = await this.get(query);
+        // return response.results ;
+        console.log(response);
+        return Array.isArray(response.results)
+        ? response.results.map(person => this.personReducer(person))
+        : [];
+  }
+
+  
     personReducer(person) {
 
         return {

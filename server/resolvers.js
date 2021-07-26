@@ -2,11 +2,10 @@
 
 module.exports = {
     Query: {
-        people: (_, __, { dataSources }) =>
-        dataSources.personApi.getAllPeople(),
-         person: (_, { name }, { dataSources }) =>
-        dataSources.personAPI.getPersonByName({ name: name }),
-    //     launch: (_, { id }, { dataSources }) =>
-    //   dataSources.personAPI.getLaunchById({ launchId: id }),
+        people: (_, {pageNo}, { dataSources }) =>
+        dataSources.personApi.getAllPeople(pageNo),
+        person: (_, {personName}, { dataSources }) =>
+        dataSources.personApi.getPerson(personName),
+    
     }
 };
